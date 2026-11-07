@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ops Task Board</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Ops Task Board</h1>
+  <p class="subtitle">Tasks as of {{ today }} &mdash; sample operations workload.</p>
+
+  <section class="counts">
+    <div><strong>{{ counts.total }}</strong><span>Total</span></div>
+    <div><strong>{{ counts.todo }}</strong><span>To Do</span></div>
+    <div><strong>{{ counts.in_progress }}</strong><span>In Progress</span></div>
+    <div><strong>{{ counts.done }}</strong><span>Done</span></div>
+    <div class="alert"><strong>{{ counts.overdue }}</strong><span>Overdue</span></div>
+  </section>
+
+  <form method="get" class="filters">
+    <label>Owner
+      <select name="owner">
+        <option value="">All</option>
+        {% for owner in owners %}
+        <option value="{{ owner }}" {% if owner == owner_filter %}selected{% endif %}>{{ owner }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Status
+      <select name="status">
+        <option value="">All</option>
+        <option value="To Do" {% if status_filter == "To Do" %}selected{% endif %}>To Do</option>
+        <option value="In Progress" {% if status_filter == "In Progress" %}selected{% endif %}>In Progress</option>
+        <option value="Done" {% if status_filter == "Done" %}selected{% endif %}>Done</option>
+      </select>
+    </label>
+    <button type="submit">Filter</button>
+    <a href="{{ url_for('board') }}">Clear</a>
+  </form>
+
+  <table>
+    <tr><th>Task</th><th>Owner</th><th>Client</th><th>Status</th><th>Priority</th><th>Due</th><th>Flag</th></tr>
+    {% for task in tasks %}
+    <tr class="{{ task.state }}">
+      <td>{{ task.title }}</td>
+      <td>{{ task.owner }}</td>
+      <td>{{ task.client }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.priority }}</td>
+      <td>{{ task.due_date }}</td>
+      <td>{{ task.state }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Add a task</h2>
+  <form method="post" action="{{ url_for('add_task') }}" class="add-form">
+    <input name="title" placeholder="Task title" required>
+    <input name="owner" placeholder="Owner" required>
+    <input name="client" placeholder="Client" required>
+    <select name="status">
+      <option>To Do</option>
+      <option>In Progress</option>
+      <option>Done</option>
+    </select>
+    <select name="priority">
+      <option>High</option>
+      <option>Medium</option>
+      <option>Low</option>
+    </select>
+    <input type="date" name="due_date" required>
+    <button type="submit">Add task</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+id,title,owner,status,priority,due_date,client
+1,Prepare weekly client status digest,Ayesha,Done,High,2026-10-27,Acme Retail
+2,Follow up on pending invoice approvals,Bassam,In Progress,High,2026-10-30,Northwind Traders
+3,Update onboarding checklist for new account,Bassam,To Do,Medium,2026-11-03,Acme Retail
+4,Reconcile October delivery tracker,Daniyal,In Progress,Medium,2026-10-29,Globex Logistics
+5,Draft SOP for escalation handling,Ayesha,To Do,Low,2026-11-06,Northwind Traders
+6,Send follow-up emails to stalled accounts,Bassam,In Progress,High,2026-10-31,Globex Logistics
+7,Review SLA report for last week,Daniyal,Done,Medium,2026-10-28,Acme Retail
+8,Schedule handover call with outgoing coordinator,Ayesha,To Do,Medium,2026-11-02,Northwind Traders
+9,Fix broken links in client dashboard export,Bassam,To Do,Low,2026-10-30,Globex Logistics
+10,Compile monthly ops summary for management,Daniyal,In Progress,High,2026-11-04,Acme Retail
+11,Confirm delivery slots for next week,Ayesha,Done,Low,2026-10-26,Northwind Traders
+12,Chase missing timesheets from contractors,Bassam,To Do,Medium,2026-11-05,Globex Logistics
